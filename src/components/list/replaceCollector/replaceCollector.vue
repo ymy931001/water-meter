@@ -87,13 +87,15 @@ computed:{
 				.then(res=>{
 					if(res){
 						let cont= []
-						let Obj = res.data.data[0]
+						let Obj = res.data.data
+						for(var i in Obj){
 						cont.push({
-							id:Obj.deviceNumber,
-							address:Obj.completeDistrict,
-							type:Obj.deviceType,
-							typename:typelist[Obj.deviceType]
+							id:Obj[i].deviceNumber,
+							address:Obj[i].completeDistrict,
+							type:Obj[i].deviceType,
+							typename:typelist[Obj[i].deviceType]
 						})
+						}
 						this.tableData=cont
 						
 					}
